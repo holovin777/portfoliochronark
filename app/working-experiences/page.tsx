@@ -1,35 +1,36 @@
 "use client";
-import {
-  Github,
-  Mail,
-  Instagram,
-  Phone,
-  LocateIcon,
-  Webcam,
-} from "lucide-react";
 import Link from "next/link";
-
 import { Card } from "../components/card";
 
-interface CustomerProps {
-  desiredProfession: string;
-  description: string;
-  phoneNumber: string;
-  birthday: string;
-  email: string;
-  residence: string;
-  residenceIt: string;
-  website: string;
-  blog: string;
-  drivingLicense: string;
-  protectedCategory: boolean;
+interface PositionAtWorkProps {
+  id: number;
+  name: string;
+  nameIt: string;
+  nameItaly: string;
 }
 
-async function getCustomer(): Promise<CustomerProps> {
+interface CompanyProps {
+  id: number;
+  name: string;
+  nameIt: string;
+  location: string;
+  locationIt: string;
+}
+
+interface CustomerWorkingExperienceProps {
+  id: number;
+  positionAtWork: PositionAtWorkProps;
+  company: CompanyProps;
+  jobDescription?: string;
+  jobDescriptionIt?: string;
+  startedWork: string;
+  finishedWork: string;
+}
+async function getCustomerWorkingExperience(): Promise<CustomerWorkingExperienceProps> {
   const apiUrl = process.env.API_URL;
   const customerId = process.env.CUSTOMER_ID;
 
-  const res = await fetch(`${apiUrl}api/v1/customer/${customerId}`, {
+  const res = await fetch(`${apiUrl}api/v1/customer/${customerId}/working-experience/all`, {
     cache: "no-store", // Ensure fresh data is fetched for every request
   });
 
@@ -37,53 +38,52 @@ async function getCustomer(): Promise<CustomerProps> {
     throw new Error("Failed to fetch customer data");
   }
 
-  const customer = (await res.json()) as CustomerProps;
+  const customerWorkingExperience = (await res.json()) as CustomerWorkingExperienceProps;
 
-  return customer;
+  return customerWorkingExperience;
 }
 
-export default async function Contact() {
-  const customer = await getCustomer();
+const socials = [
+  {
+    href: "tel:+393339616598",
+    label: "Phone",
+    handle: "+393339616508",
+  },
+  {
+    href: "https://instagram.com/holovin777",
+    label: "Instagram",
+    handle: "@holovin777",
+  },
+  {
+    href: "https://twitter.com/holovin777",
+    label: "Twitter",
+    handle: "@holovin777",
+  },
+  {
+    href: "mailto:holovin@mail.com",
+    label: "Email",
+    handle: "holovin@mail.com",
+  },
+  {
+    href: "https://github.com/holovin777",
+    label: "Github",
+    handle: "@holovin777",
+  },
+  {
+    href: "https://innomarts.com",
+    label: "Blog",
+    handle: "innomarts.com",
+  },
+  {
+    href: "https://maps.app.goo.gl/wAqtR7Wc11MKUfND7",
+    label: "Location",
+    handle: "Vigevano, Italy",
+  },
+];
 
-  const socials = [
-    {
-      icon: <Phone size={20} />,
-      href: `tel:${customer.phoneNumber}`,
-      label: "Phone",
-      handle: `${customer.phoneNumber}`,
-    },
-    {
-      icon: <Instagram size={20} />,
-      href: `${customer.phoneNumber}`,
-      label: "Instagram",
-      handle: `${customer.phoneNumber}`,
-    },
-    {
-      icon: <Mail size={20} />,
-      href: `mailto:${customer.email}`,
-      label: "Email",
-      handle: `${customer.email}`,
-    },
-    {
-      icon: <Github size={20} />,
-      href: "https://github.com/holovin777",
-      label: "Github",
-      handle: "@holovin777",
-    },
-    {
-      icon: <Webcam size={20} />,
-      href: `${customer.blog}`,
-      label: "Blog",
-      handle: `${customer.blog}`,
-    },
-    {
-      icon: <LocateIcon size={20} />,
-      href: "https://maps.app.goo.gl/wAqtR7Wc11MKUfND7",
-      label: "Location",
-      handle: `${customer.residence}`,
-    },
-  ];
+export default async function Example() {
 
+  const customerWorkingExperience = await getCustomerWorkingExperience();
   return (
     <div className=" bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
       <nav className="flex flex-col items-center justify-center w-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black p-4 text-3xl">
@@ -107,9 +107,6 @@ export default async function Contact() {
                   className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
                   aria-hidden="true"
                 />
-                <span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200 drop-shadow-orange">
-                  {s.icon}
-                </span>{" "}
                 <div className="z-10 flex flex-col items-center">
                   <span className="lg:text-xl font-medium duration-150 xl:text-3xl text-zinc-200 group-hover:text-white font-display">
                     {s.handle}
