@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "./card";
-import { Github, Mail, Instagram, Phone, LocateIcon, Webcam } from "lucide-react";
+import { Github, Mail, Instagram, Phone, LocateIcon, Webcam, Facebook } from "lucide-react";
 import Link from "next/link";
 
 interface CustomerProps {
