@@ -12,7 +12,7 @@ export const Navigation: React.FC = () => {
   ];
 
   return (
-    <div className=" bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
+    <div className="h-screen bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
       <nav className="md:my-20 py-20">
         <ul className="flex items-center justify-center gap-4 flex-col">
           {navigation.map((item) => (
