@@ -21,9 +21,15 @@ export default function SocialCards({ customer }: { customer: CustomerProps }) {
     },
     {
       icon: <Instagram size={20} />,
-      href: `${customer.phoneNumber}`,
+      href: "https://instagram.com/holovin777",
       label: "Instagram",
-      handle: `${customer.phoneNumber}`,
+      handle: "@holovin777",
+    },
+    {
+      icon: <Facebook size={20} />,
+      href: "https://facebook.com/holovin",
+      label: "Facebook",
+      handle: "@holovin",
     },
     {
       icon: <Mail size={20} />,
