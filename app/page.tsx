@@ -18,25 +18,11 @@ interface CustomerProps {
   protectedCategory: boolean;
 }
 
-async function getCustomer(): Promise<CustomerProps> {
+export default async function Home() {
   const apiUrl = process.env.API_URL;
   const customerId = process.env.CUSTOMER_ID;
-
-  const res = await fetch(`${apiUrl}api/v1/customer/${customerId}`, {
-    cache: "no-store", // Ensure fresh data is fetched for every request
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch customer data");
-  }
-
-  const customer = (await res.json()) as CustomerProps;
-
-  return customer;
-}
-
-export default async function Home() {
-  const customer = await getCustomer(); // Fetch customer data on the server
+  let data = await fetch(`${apiUrl}api/v1/customer/${customerId}`)
+  let customer = await data.json() as CustomerProps
 
   return (
     <div className="flex flex-col items-center justify-center w-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">

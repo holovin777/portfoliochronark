@@ -3,16 +3,15 @@ import Link from "next/link";
 import React from "react";
 
 export const Navigation: React.FC = () => {
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Working experiences", href: "/working-experiences" },
-  { name: "Academic degrees", href: "/academic-degrees" },
-  { name: "Course certificates", href: "/course-certificates" },
-  { name: "Contact", href: "/contact" },
-];
+  const navigation = [
+    { name: "Home", href: "/" },
+    { name: "Working experiences", href: "/working-experiences" },
+    { name: "Academic degrees", href: "/academic-degrees" },
+    { name: "Course certificates", href: "/course-certificates" },
+    { name: "Contact", href: "/contact" },
+  ];
 
-
-	return (
+  return (
     <div className=" bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
       <nav className="md:my-20 py-20">
         <ul className="flex items-center justify-center gap-4 flex-col">
@@ -28,5 +27,5 @@ const navigation = [
         </ul>
       </nav>
     </div>
-	);
+  );
 };
