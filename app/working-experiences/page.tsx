@@ -14,6 +14,7 @@ interface CompanyProps {
   nameIt: string;
   location: string;
   locationIt: string;
+  website: string;
 }
 
 interface WorkingExperienceProps {
@@ -49,7 +50,7 @@ export default async function WorkingExperience() {
           {workingExperiences.map((wE) => (
             <Card key={wE.id}>
               <Link
-                href=""
+                href={wE.company.website}
                 target="_blank"
                 className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24  lg:pb-48  md:p-16"
               >
