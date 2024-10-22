@@ -46,11 +46,12 @@ export default async function WorkingExperience() {
         </Link>
       </nav>
       <div className="container flex items-center justify-center min-h-screen m-2 p-4 mx-auto">
-        <div className="grid w-full grid-cols-1 gap-8 mx-auto sm:mt-0 sm:grid-cols-3 lg:gap-16">
+        <div className="grid w-full grid-cols-1 gap-8 mx-auto sm:mt-0 lg:grid-cols-3 lg:gap-16">
           {workingExperiences.map((wE) => (
             <Card key={wE.id}>
               <Link
-                href={wE.company.website}
+                href={wE.company?.website || '#'}
+
                 target="_blank"
                 className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24  lg:pb-48  md:p-16"
               >
