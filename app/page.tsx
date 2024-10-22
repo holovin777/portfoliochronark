@@ -25,11 +25,11 @@ export default async function Home() {
   let customer = await data.json() as CustomerProps
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+    <div className="flex flex-col items-center justify-center w-screen h-max overflow-hidden">
       <nav className="my-16 animate-fade-in">
         <Link
           href="/menu"
-          className="text-lm duration-500 text-zinc-500 hover:text-zinc-300"
+          className="text-lg duration-500 text-zinc-500 hover:text-zinc-300"
         >
           Menu
         </Link>
