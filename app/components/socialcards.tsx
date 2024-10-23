@@ -47,7 +47,7 @@ export default function SocialCards({ customer }: { customer: CustomerProps }) {
       icon: <Webcam size={20} />,
       href: `${customer.blog}`,
       label: "Blog",
-      handle: `${customer.blog}`,
+      handle: `${customer.blog.replace("https://www.", "")}`,
     },
     {
       icon: <LocateIcon size={20} />,
