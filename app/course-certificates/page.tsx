@@ -13,6 +13,7 @@ interface EducationalInstitutionProps {
   studyPlace: string;
   location: string;
   locationIt: string;
+  website: string;
 }
 
 interface QualificationProps {
@@ -54,16 +55,16 @@ export default async function AcademicDegrees() {
               aD.course && (
                 <Card key={aD.id}>
                   <Link
-                    href=""
+                    href={aD.educationalInstitution.website || "#"}
                     target="_blank"
                     className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24  lg:pb-48  md:p-16"
                   >
                     <div className="z-10 flex flex-col">
+                      <span className="lg:text-xl font-medium duration-150 xl:text-3xl text-zinc-200 group-hover:text-white text-center font-display">
+                        {aD.course.name}
+                      </span>
                       <span className="mt-4 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">
                         {aD.educationalInstitution.name}
-                      </span>
-                      <span className="mt-4 text-sm text-right duration-1000 text-zinc-400 group-hover:text-zinc-200">
-                        {aD.course.name}
                       </span>
                       <span className="mt-4 text-sm text-center duration-1000 text-yellow-100 group-hover:text-yellow-400">
                         {aD.finishedStudying}
