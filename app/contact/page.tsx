@@ -1,4 +1,3 @@
-import { Github, Mail, Instagram, Phone, LocateIcon, Webcam } from "lucide-react";
 import Link from "next/link";
 import SocialCards from "../components/socialcards";
 
